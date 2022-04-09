@@ -1,0 +1,21 @@
+[Unit]
+Description=Re-directs service
+Documentation=https://github.com/d86leader/re
+Wants=network-online.target
+After=network-online.target
+AssertFileIsExecutable=/home/morj/.local/bin/re-server
+
+[Service]
+User=morj
+Group=morj
+WorkingDirectory=/home/morj/.cache
+
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+ExecStart=/home/morj/.local/bin/re-server
+Restart=on-failure
+StandardOutput=journal
+StandardError=journal
+TimeoutStopSec=5
+KillSignal=INT
+SendSIGKILL=yes
+SuccessExitStatus=0

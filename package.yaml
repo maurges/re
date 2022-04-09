@@ -1,0 +1,46 @@
+name:                re
+version:             0.1.0.0
+license:             BSD3
+author:              "d86leader"
+maintainer:          "d86leader@mail.com"
+synopsis:            Simple redirect server
+
+ghc-options:
+- -Wall -Wcompat
+- -Werror=incomplete-patterns
+
+default-extensions:
+- BangPatterns
+- DisambiguateRecordFields
+- DuplicateRecordFields
+- LambdaCase
+- MultiWayIf
+- NamedFieldPuns
+- NumericUnderscores
+- OverloadedLabels
+- OverloadedStrings
+- ScopedTypeVariables
+- TypeApplications
+- TypeOperators
+
+executables:
+  re-server:
+    main:                Main.hs
+    source-dirs:         src
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+
+    dependencies:
+    - base
+    - bytestring
+    - containers
+    - directory
+    - filepath
+    - fsnotify
+    - http-types
+    - ron-hs
+    - text
+    - wai
+    - warp

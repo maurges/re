@@ -1,0 +1,7 @@
+resolver: lts-18.10
+packages:
+- .
+extra-deps:
+- git: "https://github.com/d86leader/ron-hs.git"
+  commit: "4353e5832d6d97d28128dfc367bb019423195ce2"
+system-ghc: true
