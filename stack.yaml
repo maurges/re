@@ -3,5 +3,4 @@ packages:
 - .
 extra-deps:
 - git: "https://github.com/d86leader/ron-hs.git"
-  commit: "4353e5832d6d97d28128dfc367bb019423195ce2"
-system-ghc: true
+  commit: "55f9d176adc262e4e49b37eec0ed0a4302fd820f"
