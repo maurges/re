@@ -5,8 +5,8 @@ let
   re-server = import (pkgs.fetchFromGitHub {
     owner = "d86leader";
     repo = "re";
-    rev = "542ba8152d5a96385be7352010048b2274ec2493";
-    hash = "sha256-/W5FDudN2aCcopnUPJuywblFCQ+TV7NW64bLPqkQIN0=";
+    rev = "a82b7618a84748c639100f08af176ecdc156d088";
+    hash = "sha256-gpQ84GvDkv1sDe28NVfQO5WfQMO/DZxHR6CzYBQsnWc=";
   }) { inherit pkgs; };
 in {
   options.services.re-server = {
