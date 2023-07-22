@@ -1,0 +1,47 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           re
+version:        0.1.0.0
+synopsis:       Simple redirect server
+author:         d86leader
+maintainer:     d86leader@mail.com
+license:        BSD3
+build-type:     Simple
+
+executable re-server
+  main-is: Main.hs
+  other-modules:
+      Paths_re
+  hs-source-dirs:
+      src
+  default-extensions:
+      BangPatterns
+      DisambiguateRecordFields
+      DuplicateRecordFields
+      LambdaCase
+      MultiWayIf
+      NamedFieldPuns
+      NumericUnderscores
+      OverloadedLabels
+      OverloadedStrings
+      ScopedTypeVariables
+      TypeApplications
+      TypeOperators
+  ghc-options: -Wall -Wcompat -Werror=incomplete-patterns -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base
+    , bytestring
+    , containers
+    , directory
+    , filepath
+    , fsnotify
+    , http-types
+    , ron-hs
+    , text
+    , wai
+    , warp
+  default-language: Haskell2010
