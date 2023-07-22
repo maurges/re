@@ -7,6 +7,8 @@ module Main where
 import qualified Data.Map.Strict as Map
 import qualified Network.Wai.Handler.Warp as Warp
 
+import Control.Concurrent (threadDelay)
+import Control.Exception (SomeException, handle)
 import Data.Function ((&))
 import Data.IORef (IORef, newIORef, readIORef, writeIORef)
 import Data.Map.Strict (Map)
@@ -63,6 +65,9 @@ app redirects req respond = do
             in respond $ responseBuilder seeOther303 [("Location", redir')] mempty
         Nothing -> respond $ responseLBS status404 [] "Not Found"
 
+reportError :: SomeException -> IO ()
+reportError e = putStrLn $ "Caught error: " <> show e
+
 main :: IO ()
 main = do
     appSettings@Settings {port, redirectsPath} <-
@@ -73,7 +78,13 @@ main = do
     let (dir', file) = splitFileName redirectsPath
     dir <- makeAbsolute dir'
     redirectsRef <- newIORef $ Redirects redirects
-    let reloadRedirects = do
+    let reloadRedirects = handle reportError $ do
+            -- There's a race somewhere and when we try to read file
+            -- immediately after creationm we read it as empty sometimes.
+            -- Even if there are no further events in that directory (which
+            -- would change the file, it's changed without events). So we
+            -- wait a millisecond before reading to prevent it
+            threadDelay 1000
             content <- Redirects <$> decodeFile redirectsPath
             writeIORef redirectsRef content
             putStrLn "Reloaded redirects"
