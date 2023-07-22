@@ -1,0 +1,7 @@
+indent-size: 4
+line-length: 80
+force-trailing-newline: true
+extensions:
+  - DataKinds
+  - GADTs
+  - TypeApplications
