@@ -1,9 +1,8 @@
-resolver: lts-21.0
+resolver: lts-22.43
 packages:
 - .
 extra-deps:
-- git: "https://github.com/d86leader/ron-hs.git"
-  commit: "e01e6acd0970c3e236450e10aeff5f22e135ed42"
+- ron-hs-0.4.0@sha256:cb8e4f951549854d3c3531a2c3ba40e5fdbed2cc993852aaccf3f258ea64ee5d,3429
 system-ghc: true
 ghc-options:
   "$everything": "-split-sections"
